@@ -1,2 +1,3 @@
-# Ignorar carpeta de vscode
+# Ignorar carpetas temporales
 /.vscode
+/__pycache__
