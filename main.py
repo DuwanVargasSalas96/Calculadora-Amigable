@@ -3,88 +3,129 @@
 # Importar
 import operaciones_aritmeticas as operaciones
 
-# Menu
-def menu_opciones():
-    # Imprimir menú
-    print("\n---------------------------------------------------")
-    print("Calculadora Amigable V.2 - Menú Principal")
-    print("---------------------------------------------------")
-    print("| 1. Sumar")
-    print("| 2. Restar")
-    print("| 3. Multiplicar")
-    print("| 4. Dividir")
-    print("| 5. Salir")
-    print("---------------------------------------------------")
-    opcion = input("Seleccione una operación: ")
-    print("---------------------------------------------------\n")
-
-    # Retorno
-    return opcion
-
-
-# Capturar números
-def capturar_numeros():
+# Capturar operacion
+def capturar_operacion():
     # Menú
     print("\n---------------------------------------------------")
-    print("Digite sus números")
+    print("Calculadora Amigable V.3")
     print("---------------------------------------------------")
+    operacion = input("Ingrese su operación (Ej: 2 + 2, 2*2): ")
     
-    # Control
-    try:
-        # Capturar números
-        a = float(input("Digite su primer número: "))
-        b = float(input("Digite su segundo número: "))
-        print("---------------------------------------------------\n")
-
-        # Retorno
-        return [a, b]
-    except:
-        # Imprimir
-        print("---------------------------------------------------\n")
-        print("Datos incorrectos, intenté nuevamente")
-
-        # Loop
-        capturar_numeros()
+    # Operacion
+    return operacion
 
 
 # Función principal
 def main():
     while(True):
-        # Capturar menú
-        opcion = menu_opciones()
+        # Capturar operacion
+        operacion = capturar_operacion()
 
         # Condicional
-        if opcion == '1':
-            # Capturar numeros
-            a, b = capturar_numeros()
+        if "+" in operacion:
+            # Capturar números
+            a, b = operacion.split("+")
 
-            # Operar
-            print("El resultado de la suma es: " + str(operaciones.sumar(a, b)))
-        elif opcion == '2':
-            # Capturar numeros
-            a, b = capturar_numeros()
+            # Control de errores
+            try:
+                # Convertir
+                a = float(a)
+                b = float(b)
 
-            # Operar
-            print("El resultado de la resta es: " + str(operaciones.restar(a, b)))
-        elif opcion == '3':
-            # Capturar numeros
-            a, b = capturar_numeros()
+                # Imprimir
+                print("---------------------------------------------------\n")
+                print(operacion + " = " + str(operaciones.sumar(a, b)))
+                print("\n---------------------------------------------------\n")
+                print("Para salir escriba salir o SALIR")
+            except:
+                # Imprimir
+                print("---------------------------------------------------\n")
+                print("Operación incorrecta, intenté nuevamente")
+                print("\n---------------------------------------------------\n")
+                print("Para salir escriba salir o SALIR")
 
-            # Operar
-            print("El resultado de la multiplicación es: " + str(operaciones.multiplicar(a, b)))
-        elif opcion == '4':
-            # Capturar numeros
-            a, b = capturar_numeros()
+                # Retorno
+                main()
+        elif "-" in operacion:
+            # Capturar números
+            a, b = operacion.split("-")
 
-            # Operar
-            print("El resultado de la división es: " + str(operaciones.dividir(a, b)))
-        elif opcion == '5':
-            # Finalizar
+            # Control de errores
+            try:
+                # Convertir
+                a = float(a)
+                b = float(b)
+
+                # Imprimir
+                print("---------------------------------------------------\n")
+                print(operacion + " = " + str(operaciones.restar(a, b)))
+                print("\n---------------------------------------------------\n")
+                print("Para salir escriba salir o SALIR")
+            except:
+                # Imprimir
+                print("---------------------------------------------------\n")
+                print("Operación incorrecta, intenté nuevamente")
+                print("\n---------------------------------------------------\n")
+                print("Para salir escriba salir o SALIR")
+
+                # Retorno
+                main()
+        elif "*" in operacion:
+            # Capturar números
+            a, b = operacion.split("*")
+
+            # Control de errores
+            try:
+                # Convertir
+                a = float(a)
+                b = float(b)
+
+                # Imprimir
+                print("---------------------------------------------------\n")
+                print(operacion + " = " + str(operaciones.multiplicar(a, b)))
+                print("\n---------------------------------------------------\n")
+                print("Para salir escriba salir o SALIR")
+            except:
+                # Imprimir
+                print("---------------------------------------------------\n")
+                print("Operación incorrecta, intenté nuevamente")
+                print("\n---------------------------------------------------\n")
+                print("Para salir escriba salir o SALIR")
+
+                # Retorno
+                main()
+        elif "/" in operacion:
+            # Capturar números
+            a, b = operacion.split("/")
+
+            # Control de errores
+            try:
+                # Convertir
+                a = float(a)
+                b = float(b)
+
+                # Imprimir
+                print("---------------------------------------------------\n")
+                print(operacion + " = " + str(operaciones.dividir(a, b)))
+                print("\n---------------------------------------------------\n")
+                print("Para salir escriba salir o SALIR")
+            except:
+                # Imprimir
+                print("---------------------------------------------------\n")
+                print("Operación incorrecta, intenté nuevamente")
+                print("\n---------------------------------------------------\n")
+                print("Para salir escriba salir o SALIR")
+
+                # Retorno
+                main()
+        elif operacion == 'SALIR' or operacion == 'salir':
+            # Salir
             exit()
         else:
-            # Operar
-            print("Operación incorrecta, intente nuevamente")
-        
+            # Imprimir
+            print("---------------------------------------------------\n")
+            print("Operación incorrecta, intenté nuevamente")
 
-# Linea ejecucion    
+
+# Linea ejecucion
 main()
